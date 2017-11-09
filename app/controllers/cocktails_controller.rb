@@ -5,6 +5,7 @@ class CocktailsController < ApplicationController
   # GET /cocktails.json
   def index
     @cocktails = Cocktail.all
+    @dose = Dose.new
   end
 
   # GET /cocktails/1
@@ -42,7 +43,7 @@ class CocktailsController < ApplicationController
   def update
     respond_to do |format|
       if @cocktail.update(cocktail_params)
-        format.html { redirect_to @cocktail, notice: 'Cocktail was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'Cocktail was successfully updated.' }
         format.json { render :show, status: :ok, location: @cocktail }
       else
         format.html { render :edit }

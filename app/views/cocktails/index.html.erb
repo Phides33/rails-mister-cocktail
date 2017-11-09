@@ -13,10 +13,28 @@
   <tbody>
     <% @cocktails.each do |cocktail| %>
       <tr>
-        <td><%= cocktail.name %></td>
+        <td><%= cocktail.category %> - <%= cocktail.name %></td>
         <td><%= link_to 'Show', cocktail %></td>
         <td><%= link_to 'Edit', edit_cocktail_path(cocktail) %></td>
         <td><%= link_to 'Destroy', cocktail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <h3>-------------- Doses --------------</h3>
+          <ul>
+            <% cocktail.doses.each do |dose| %>
+            <li><%= dose.ingredient.name %>: <%= dose.description %>
+              <%= link_to "Edit", edit_dose_path(dose.id), class: "btn btn-primary" %>
+            <%=
+              link_to "Delete", dose_path(dose),
+              method: :delete,
+              data: { confirm: "Are you sure?" },
+              class: "btn btn-warning"
+            %>
+            </li>
+            <% end %>
+          </ul>
+
+          <h3>--------------------------------------</h3>
+        </td>
       </tr>
     <% end %>
   </tbody>

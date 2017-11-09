@@ -1,0 +1,5 @@
+<h4>
+  <%= @dose.ingredient %>: <%= @dose.description %>
+  <%= link_to 'Edit', edit_dose_path(@dose) %>
+  <%= link_to 'Remove', destroy_dose_path(@dose) %>
+</h4>
