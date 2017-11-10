@@ -1,16 +1,17 @@
 class CocktailsController < ApplicationController
   before_action :set_cocktail, only: [:show, :edit, :update, :destroy]
+  before_action :cocktail_params, only: [:create, :update]
 
   # GET /cocktails
   # GET /cocktails.json
   def index
     @cocktails = Cocktail.all
-    @dose = Dose.new
   end
 
   # GET /cocktails/1
   # GET /cocktails/1.json
   def show
+    @dose = Dose.new
   end
 
   # GET /cocktails/new
@@ -70,6 +71,6 @@ class CocktailsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cocktail_params
-      params.require(:cocktail).permit(:name)
+      params.require(:cocktail).permit(:name, :category)
     end
 end

@@ -2,6 +2,7 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.input :category, collection: Cocktail::COCKTAIL_CATEGORIES, as: :radio_buttons %>
     <%= f.input :name %>
   </div>
 

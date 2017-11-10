@@ -14,8 +14,8 @@ class DosesController < ApplicationController
 
   # GET /doses/new
   def new
-    # @cocktail = Cocktail.find(params[:cocktail_id])
-    # @dose = Dose.new
+    @cocktail = Cocktail.find(params[:cocktail_id])
+    @dose = Dose.new
   end
 
   # GET /doses/1/edit
@@ -30,7 +30,7 @@ class DosesController < ApplicationController
     # we need `cocktail_id` to asssociate dose with corresponding cocktail
     @dose.cocktail = @cocktail
     if @dose.save
-      redirect_to root_path
+      redirect_to cocktail_path(@cocktail)
     else
       render :new
     end
